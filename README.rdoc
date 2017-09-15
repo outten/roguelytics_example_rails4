@@ -1,8 +1,0 @@
-== README
-
-This is a test Rails4 App for Roguelytics (https://www.roguelytics.com)
-
-Sign up and get your keys for free.
-
-After you signup, update the configuration file with your keys: config/initializer/roguelytics.rb
-

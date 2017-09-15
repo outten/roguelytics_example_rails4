@@ -1,2 +1,102 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1 id="roguelytics-example-rails4-application">Roguelytics Example Rails4 Application</h1>
+<p>This is a test Rails4 App for <a href="https://www.roguelytics.com">Roguelytics</a></p>
+<h2 id="documentation-valid-for-master-branch">Documentation valid for <code>master</code> branch</h2>
+<ul>
+<li><a href="#roguelytics">Roguelytics</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#ruby-and-rails">Ruby and Rails</a></li>
+<li><a href="#activejob">ActiveJob</a></li>
+<li><a href="#sqlite3">sqlite3</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#sign-up">Sign Up</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#prep-app">Prep App</a></li>
+<li><a href="#run-app">Run App</a></li>
+<li><a href="#using-roguelytics">Using Roguelytics</a></li>
+<li><a href="#view-helper-for-page-tracking">View Helper For Page Tracking</a></li>
+<li><a href="#business-object-monitoring">Business Object Monitoring</a></li>
+<li><a href="#openssl-errors">OpenSSL Errors</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#about-rogue-studios">About Rogue Studios</a></li>
+</ul>
+<h1 id="roguelytics">Roguelytics</h1>
+<p><a href="https://www.roguelytics.com?utm_source=github">Roguelytics</a> The Only TRUE On-Page Analytics Platform</p>
+<h3 id="on-page-and-never-out-of-sight.">On-Page and Never Out of Sight.</h3>
+<p>Logging into separate portals is a thing of the past. By natively placing analytics on-page, your analytics are never out of sight or out of mind.</p>
+<h3 id="real-time.">Real-Time.</h3>
+<p>Return relevant, big picture data focusing on common goals most important to you, in real-time, all the time.</p>
+<h3 id="simplified.">Simplified.</h3>
+<p>Accurate and simple user-friendly goal-driven data that provides actionable insights. No more second-guessing “if you’re reading the numbers right”.</p>
+<h3 id="goal-orientated-actionable.">Goal Orientated &amp; Actionable.</h3>
+<p>Understand and relay current user behaviors, and lend to anticipating customer trends or shifts in buyer behavior.</p>
+<h3 id="dive-deeper">Dive-Deeper</h3>
+<p>Top-line on-page consumer dashboard coupled with the ability to drill-drown into the supporting data through a simple user-friendly platform.</p>
+<h3 id="path-navigation-playback">Path Navigation &amp; Playback</h3>
+<p>See how users navigate and where they fall off or get stuck. Identify usability issues by watching recordings of real visitors as they click, tap, type and navigate across pages.</p>
+<p>Roguelytics was created by <a href="https://www.roguestudios.com?utm_source=github">RogueStudios</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<h3 id="ruby-and-rails">Ruby and Rails</h3>
+<p>This example Rails4 application requires Ruby version <strong>&gt;= 2.2.0</strong> and Rails version <strong>&gt;= 4.2.1</strong></p>
+<h3 id="activejob">ActiveJob</h3>
+<p>Roguelytics uses ActiveJob version <strong>&gt;= 4.2</strong></p>
+<h3 id="sqlite3">sqlite3</h3>
+<p>This example Rails4 application requires <em>sqlite3</em></p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="sign-up">Sign Up</h3>
+<p>To install Roguelytics to your website, you will need to sign up for an account and generate a key and install unique tracking code before Roguelytics will track your site(s).</p>
+<p>Sign Up by visiting: <a href="https://www.roguelytics.com/sign_up?utm_source=github">Roguelytics</a>.</p>
+<p><em>Step 1</em>: Add A Site - Create a name by adding a new site. This will generate your keys and tracking code. Add multiple sites the same way –tracking code is unique per site.</p>
+<p><em>Step 2</em>: Add Tracking Code - Under your Network of sites you’ll find your “Production” environment Key. This is your unique tracking code that goes into your SEO or Footer Files on your website. Simply copy and paste!</p>
+<p><em>Step 3</em>: Utilize Multiple Environments (optional) - Multiple environments are already created so you can create and build within testing, staging, and production environments with unique environment variables for each.</p>
+<p><em>Step 4</em>: Add Additional Users - Only those who have credentials and sign-in to Roguelytics can see your on-page analytics. For others within your organization have access and be able to view drawer and portal, you will need to invite them. Once invited, they will need to register or sign up.</p>
+<h3 id="configuration">Configuration</h3>
+<p>After you sign-up and get your keys, create a configuration file: config/initializers/roguelytics.rb</p>
+<pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="co">#</span>
+<span class="co"># Roguelytics Initializer</span>
+<span class="co">#</span>
+<span class="dt">ROGUELYTICS_SITEKEY</span> = <span class="st">&#39;&lt;production key&gt;&#39;</span> <span class="kw">if</span> <span class="dt">Rails</span>.env.production?
+<span class="dt">ROGUELYTICS_SITEKEY</span> = <span class="st">&#39;&lt;staging key&gt;&#39;</span> <span class="kw">if</span> <span class="dt">Rails</span>.env.staging?
+<span class="dt">ROGUELYTICS_SITEKEY</span> = <span class="st">&#39;&lt;development key&gt;&#39;</span> <span class="kw">if</span> <span class="dt">Rails</span>.env.development?
+<span class="dt">ROGUELYTICS_SITEKEY</span> = <span class="st">&#39;&lt;qa key&gt;&#39;</span> <span class="kw">if</span> <span class="dt">Rails</span>.env.qa?
+<span class="dt">ROGUELYTICS_SITEKEY</span> = <span class="st">&#39;&lt;test key&gt;&#39;</span> <span class="kw">if</span> <span class="dt">Rails</span>.env.test?</code></pre>
+<p>Add your site's KEYS to this file for each environment.</p>
+<h3 id="prep-app">Prep App</h3>
+<pre><code>% bundle install
+% rake db:migrate</code></pre>
+<h3 id="run-app">Run App</h3>
+<pre><code>% rails s</code></pre>
+<h3 id="view-helper-for-page-tracking">View Helper For Page Tracking</h3>
+<p>The view helper <em>rogueltyics</em> should be included in layouts for each page you want tracked. Just incuded the view helper in the layout right before the closing <em>body</em> tag. See below:</p>
+<pre class="sourceCode ruby"><code class="sourceCode ruby">&lt;!<span class="dt">DOCTYPE</span> html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    ...
+&lt;<span class="ot">/head&gt;</span>
+<span class="ot">&lt;body&gt;</span>
+<span class="ot">    &lt;%= yield %&gt;</span>
+<span class="ot">    &lt;%= roguelytics %&gt;</span>
+<span class="ot">&lt;/</span>body&gt;
+&lt;<span class="ot">/html&gt;</span></code></pre>
+<h3 id="business-object-monitoring">Business Object Monitoring</h3>
+<p>For each model that you want Roguelytics to monitor, add the following two lines:</p>
+<pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">class</span> <span class="dt">Article</span> &lt; <span class="dt">ActiveRecord</span>::<span class="dt">Base</span>
+    include <span class="dt">Roguelytics</span>::<span class="dt">HasRoguelytics</span>
+    has_roguelytics
+<span class="kw">end</span></code></pre>
+<p>Roguelytics create an ActiveJob for each of the following actions: CREATE, UPDATE, DELETE.</p>
+<p>Note: when running in <em>DEVELOPMENT</em> mode, the ActiveJob will run in the foreground (perform now). In all other modes, it will be enqueued and run later (perform later). You must setup ActiveJob with a backend. Instructions are <a href="http://edgeguides.rubyonrails.org/active_job_basics.html">here</a></p>
+<p>The GEM will pass the object's class name and ID to Roguelytics. If the model responds to &quot;name&quot;, the name of the model will also be passed and can be used for reporting.</p>
+<h2 id="openssl-errors">OpenSSL Errors</h2>
+<p>In <em>development</em> mode on a Mac, you may get the following error:</p>
+<pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="dt">SSL_connect</span> returned=<span class="dv">1</span> errno=<span class="dv">0</span> state=error: certificate verify failed</code></pre>
+<p>If you get this error, you can add the following to your configuration file: config/initializers/roguelytics.rb</p>
+<pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">if</span> <span class="dt">Rails</span>.env.development? <span class="co">#or Rails.env.staging?</span>
+  <span class="dt">OpenSSL</span>::<span class="dt">SSL</span>::<span class="dt">VERIFY_PEER</span> = <span class="dt">OpenSSL</span>::<span class="dt">SSL</span>::<span class="dt">VERIFY_NONE</span>
+<span class="kw">end</span></code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>If you'd like to contribute a feature or bugfix: Thanks! Send us an email: developers@roguestudios.io</p>
+<h2 id="license">License</h2>
+<p>Paperclip is Copyright © 2017 Rogue Studios, LLC. It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.</p>
+<h2 id="about-rogue-studios">About Rogue Studios</h2>
+<p>Roguelytics GEM is maintained and funded by Rogue Studios. The names and logos for thoughtbot are trademarks of Rogue Studios, LLC.</p>
+<p><a href="https://www.roguestudios.com?utm_source=github">RogueStudios</a></p>

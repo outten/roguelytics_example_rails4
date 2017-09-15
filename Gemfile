@@ -45,4 +45,6 @@ group :development do
   gem 'spring'
 end
 
-gem 'roguelytics', '~> 1.0.11'
+gem 'roguelytics', '~> 1.0.13'
+gem 'github-markup'
+
