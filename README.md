@@ -116,7 +116,7 @@ Add your site's KEYS to this file for each environment.
 
 The view helper *rogueltyics* should be included in layouts for each page you want tracked. Just incuded the view helper in the layout right before the closing *body* tag. See below:
 
-```ruby
+```
 <!DOCTYPE html>
 <html>
 <head>
